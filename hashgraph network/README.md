@@ -1,90 +1,201 @@
-<p align="center">
-  <img width="33%" src="https://user-images.githubusercontent.com/963333/130191619-f1f0c342-ab8f-499d-b8f8-52309c13d2cb.png"/>
-</p>
+# CapitalXchange - Hedera Hashgraph Network Integration
 
-# ibet-Network
+## Overview
+CapitalXchange's Hedera Hashgraph network integration provides a robust infrastructure for real-time stock market data processing and trading on the Hedera network. This network layer ensures secure, transparent, and efficient operations between the Kenya Stock Exchange and Hedera Hashgraph.
 
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-2.5-blue.svg?cacheSeconds=2592000" />
-</p>
+## Network Components
 
-English | [日本語](./README_JA.md)
+### 1. Validator Node
+- Handles consensus participation
+- Processes transactions
+- Maintains network state
+- Validates blocks
 
-## Features
+### 2. General Node
+- Stores stock market data
+- Handles API requests
+- Manages data synchronization
+- Provides monitoring services
 
-[ibet](https://ibet.jp/) is a consortium blockchain built and operated mainly by [BOOSTRY Co., Ltd.](https://boostry.co.jp/).
+## Network Configuration
 
-### 1. Consortium blockchain
+### Environment Setup
+```env
+# Hedera Network Configuration
+HEDERA_NETWORK=testnet
+OPERATOR_ID=your_account_id
+OPERATOR_KEY=your_private_key
+KSE_TOPIC_ID=your_topic_id
 
-ibet is a consortium blockchain. 
-It is built using [Quorum](https://consensys.net/quorum/), an OSS blockchain for enterprise. 
-Currently, it is being developed only for the Japanese market.
+# Node Configuration
+NODE_PORT=5551
+NODE_ENV=development
+```
 
-ibet is a consortium blockchain made up of "companies". 
-Each company in the consortium builds its own node (non-Validator node) and connects it to the network.
+### Network Features
+- Real-time data synchronization
+- Secure transaction processing
+- Automated monitoring
+- Health checks
+- Error handling
 
-### 2. Two networks
+## Directory Structure
+```
+hashgraph network/
+├── validator/           # Validator node configuration
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+├── general/            # General node configuration
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+├── monitoring/         # Monitoring services
+│   ├── monitor_block_sync.js
+│   └── monitor_stock_market.js
+└── tests/             # Network tests
+    ├── __tests__/
+    └── jest.config.js
+```
 
-There are two consortium networks, "**ibet**" and "**ibet for Fin**", in compliance with Japanese laws and regulations.
-Each of them constitutes its own blockchain network.
+## Setup Instructions
 
-Each consortium has its own independent governance and operates according to its own terms of reference and guidelines.
+1. **Clone the Repository**
+```bash
+git clone https://github.com/i-mwangi/CapitalXchange.git
+cd CapitalXchange/hashgraph\ network
+```
 
-- **ibet** : A network in which any company can participate. Mainly non-financial rights (utility tokens) are distributed.
-- **ibet for Fin** : A network in which mainly only financial institutions can participate. Products that require the intermediation of licensed financial institutions in the secondary market are distributed.
+2. **Install Dependencies**
+```bash
+npm install
+```
 
+3. **Configure Environment**
+```bash
+cp .env.example .env
+# Edit .env with your credentials
+```
 
-## About this repository
+4. **Start the Network**
+```bash
+# Start validator node
+cd validator
+npm start
 
-This repository manages the network definitions and Quorum node containers (Validator, General) defined by the ibet consortium.
+# Start general node
+cd ../general
+npm start
+```
 
-### Repository structure
+## Monitoring
 
-The network definitions and node definitions for each network are stored in each of the following directories.
+### Block Sync Monitoring
+```bash
+npm run monitor:block-sync
+```
 
-- `ibet-network` : ibet main network
-- `ibet-for-fin-network` : ibet for Fin main network
-- `test-network` : ibet test network
-- `local-network` : local network
+### Stock Market Monitoring
+```bash
+npm run monitor:stock-market
+```
 
-### Version control policy
+## Testing
 
-The repository of ibet-Network will be version controlled by the following policy.
+### Run Network Tests
+```bash
+npm test
+```
 
-- Version up of the whole repository is done every 6 months.
-- Version up of the Quorum node will be done every 6 months. The version to be adopted in the next update will be decided by consortium agreement.
-  - Without a hard fork: Minor version up (e.g. 1.0 -> 1.1)
-  - With a hard fork: Major version up (e.g., 1.0 -> 2.0)
-- For other urgent fixes, a revision upgrade will be released urgently (e.g., 1.1.0 -> 1.1.1).
+### Test Coverage
+```bash
+npm run test:coverage
+```
 
+## Security
 
-## Quorum Version
+### Network Security
+- All nodes are authenticated
+- Transactions are signed
+- Data is encrypted
+- Regular security audits
 
-Currently, the ibet Network is built using a node client based on [v24.4.0](https://github.com/ConsenSys/quorum/releases/tag/v24.4.0) of Quorum. 
-The node application has been optimized for ibet Network and partially differs from that of Quorum itself.
-For more information, please refer to the following project.
+### Access Control
+- Role-based access
+- API authentication
+- Rate limiting
+- IP whitelisting
 
-[BoostryJP/quorum](https://github.com/BoostryJP/quorum)
+## Maintenance
 
-## Consensus Protocol
+### Health Checks
+- Node status monitoring
+- Network connectivity
+- Data synchronization
+- Performance metrics
 
-In our ibet network we use [QBFT](https://arxiv.org/abs/2002.03613) as a consensus protocol.
+### Backup Procedures
+- Regular state backups
+- Configuration backups
+- Data recovery plans
 
-## EVM Version
+## Deployment
 
-Our ibet network EVM version is `berlin`. Therefore, smart contracts need to be compiled for this EVM version.
+### Docker Deployment
+```bash
+# Build images
+docker-compose build
 
-## How to Join the ibet Network
+# Start services
+docker-compose up -d
+```
 
-For more information on how to join the network, please visit the official [ibet website](https://ibet.jp/).
+### Manual Deployment
+1. Build the nodes:
+```bash
+npm run build
+```
 
+2. Start the services:
+```bash
+npm start
+```
+
+## Troubleshooting
+
+### Common Issues
+1. Node Synchronization
+   - Check network connectivity
+   - Verify Hedera credentials
+   - Monitor block sync status
+
+2. Data Processing
+   - Check KSE API connectivity
+   - Verify data format
+   - Monitor processing logs
+
+### Logs
+- Node logs: `logs/node.log`
+- Sync logs: `logs/sync.log`
+- Error logs: `logs/error.log`
+
+## Contributing
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
 ## License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-- The go-ethereum library is licensed under the
-[GNU Lesser General Public License v3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html), also
-included in our repository in the `COPYING.LESSER` file.
+## Support
+For support, please contact:
+- Email: support@capitalxchange.com
+- Website: https://capitalxchange.com
+- GitHub Issues: https://github.com/i-mwangi/CapitalXchange/issues
 
-- The go-ethereum binaries is licensed under the
-[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html), also included
-in our repository in the `COPYING` file.
+## Acknowledgments
+- Hedera Hashgraph Team
+- Kenya Stock Exchange
+- All contributors to this project
