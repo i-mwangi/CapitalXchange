@@ -1,0 +1,123 @@
+{
+    "config": {
+        "chainId": 296,
+        "homesteadBlock": 0,
+        "eip150Block": 0,
+        "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "eip155Block": 0,
+        "eip158Block": 0,
+        "byzantiumBlock": 0,
+        "constantinopleBlock": 0,
+        "petersburgBlock": 0,
+        "istanbulBlock": 0,
+        "berlinBlock": 0,
+        "londonBlock": 0,
+        "arrowGlacierBlock": 0,
+        "grayGlacierBlock": 0,
+        "mergeNetsplitBlock": 0,
+        "shanghaiTime": 0,
+        "terminalTotalDifficulty": 0,
+        "terminalBlockHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "terminalBlockHashActivationEpoch": 0,
+        "baseFeePerGas": "0x0",
+        "withdrawals": [],
+        "blobGas": {
+            "targetBlobGasPerBlock": "0x0",
+            "maxBlobGasPerBlock": "0x0",
+            "targetBlobGasPerTransaction": "0x0",
+            "blobGasPriceUpdateFraction": "0x0",
+            "minBlobGasPrice": "0x0"
+        },
+        "parentBeaconBlockRoot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "hedera": {
+            "network": "testnet",
+            "mirrorNode": "https://testnet.mirrornode.hedera.com/api/v1",
+            "consensusNode": "0.0.3",
+            "general": {
+                "nodeId": "0.0.3",
+                "accountId": "0.0.123456",
+                "privateKey": "302e020100300506032b657004220420...",
+                "mode": "consensus",
+                "maxTransactionFee": "1000000000",
+                "maxTransactionSize": 6144,
+                "maxContractSize": 24576,
+                "maxContractStorage": 1024,
+                "maxContractGas": 1000000
+            }
+        },
+        "stockMarket": {
+            "kse": {
+                "apiEndpoint": "https://api.kenyanstocks.example.com",
+                "updateInterval": 300,
+                "symbols": [
+                    "SCOM",
+                    "EQTY",
+                    "KCB",
+                    "Safaricom",
+                    "EABL"
+                ],
+                "tradingHours": {
+                    "start": "09:00",
+                    "end": "17:00",
+                    "break": {
+                        "start": "12:00",
+                        "end": "12:30"
+                    }
+                },
+                "contracts": {
+                    "stockRegistry": "0x...",
+                    "tradingEngine": "0x...",
+                    "settlementSystem": "0x..."
+                }
+            },
+            "tradingRules": {
+                "minOrderSize": "0.01",
+                "maxOrderSize": "1000000",
+                "pricePrecision": 2,
+                "allowedOrderTypes": ["market", "limit", "stop"],
+                "maxPriceDeviation": "0.05"
+            },
+            "riskManagement": {
+                "maxPositionSize": "1000000",
+                "maxDailyLoss": "0.1",
+                "marginRequirements": {
+                    "initial": "0.5",
+                    "maintenance": "0.25"
+                }
+            },
+            "monitoring": {
+                "metrics": {
+                    "priceDeviation": "0.05",
+                    "volumeSpike": "3.0",
+                    "latency": 1000
+                },
+                "alerts": {
+                    "priceDeviation": true,
+                    "volumeSpike": true,
+                    "latency": true
+                }
+            }
+        }
+    },
+    "nonce": "0x0",
+    "timestamp": "0x0",
+    "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "gasLimit": "0x8000000",
+    "difficulty": "0x1",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "coinbase": "0x0000000000000000000000000000000000000000",
+    "alloc": {
+        "0x0000000000000000000000000000000000000001": {
+            "balance": "0x1000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "0x0000000000000000000000000000000000000002": {
+            "balance": "0x1000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "0x0000000000000000000000000000000000000003": {
+            "balance": "0x1000000000000000000000000000000000000000000000000000000000000000"
+        }
+    },
+    "number": "0x0",
+    "gasUsed": "0x0",
+    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}

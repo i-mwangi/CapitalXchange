@@ -1,0 +1,68 @@
+{
+    "config": {
+        "chainId": 296,
+        "homesteadBlock": 0,
+        "eip150Block": 0,
+        "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "eip155Block": 0,
+        "eip158Block": 0,
+        "byzantiumBlock": 0,
+        "constantinopleBlock": 0,
+        "petersburgBlock": 0,
+        "istanbulBlock": 0,
+        "berlinBlock": 0,
+        "londonBlock": 0,
+        "arrowGlacierBlock": 0,
+        "grayGlacierBlock": 0,
+        "mergeNetsplitBlock": 0,
+        "terminalTotalDifficulty": 0,
+        "terminalBlockHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "terminalBlockNumber": 0,
+        "shanghaiTime": 0,
+        "cancunTime": 0,
+        "pragueTime": 0,
+        "hedera": {
+            "network": "testnet",
+            "mirrorNode": "https://testnet.mirrornode.hedera.com",
+            "consensusNode": "0.0.3",
+            "validator": {
+                "nodeId": "0.0.3",
+                "accountId": "0.0.123456",
+                "privateKey": "302e020100300506032b657004220420...",
+                "mode": "consensus"
+            },
+            "stockMarket": {
+                "apiEndpoint": "https://api.kenyanstocks.example.com",
+                "updateInterval": 300,
+                "symbols": ["SCOM", "EQTY", "KCB", "Safaricom", "EABL"],
+                "tradingHours": {
+                    "start": "09:00",
+                    "end": "15:00",
+                    "timezone": "Africa/Nairobi"
+                },
+                "settlementPeriod": "T+3",
+                "maxPriceChange": 0.1
+            }
+        }
+    },
+    "nonce": "0x0",
+    "timestamp": "0x0",
+    "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "gasLimit": "0x8000000",
+    "difficulty": "0x1",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "coinbase": "0x0000000000000000000000000000000000000000",
+    "alloc": {
+        "0x0000000000000000000000000000000000000000": {
+            "balance": "0x0"
+        }
+    },
+    "number": "0x0",
+    "gasUsed": "0x0",
+    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "baseFeePerGas": "0x0",
+    "withdrawals": [],
+    "blobGasUsed": "0x0",
+    "excessBlobGas": "0x0",
+    "parentBeaconBlockRoot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}

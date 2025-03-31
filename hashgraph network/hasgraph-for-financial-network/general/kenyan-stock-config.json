@@ -1,0 +1,40 @@
+{
+  "apiConfig": {
+    "endpoint": "${KENYAN_STOCK_API_ENDPOINT}",
+    "apiKey": "${KENYAN_STOCK_API_KEY}",
+    "timeout": 10000,
+    "retryCount": 3,
+    "retryDelay": 5000
+  },
+  "stockData": {
+    "symbols": [
+      "KCB",
+      "EQTY",
+      "SCOM",
+      "EABL",
+      "BAT"
+    ],
+    "updateInterval": 3600,
+    "historyRetentionDays": 30
+  },
+  "hederaIntegration": {
+    "contractId": "${STOCK_DATA_CONTRACT_ID}",
+    "topicId": "${HEDERA_TOPIC_ID}",
+    "gasLimit": 1000000,
+    "defaultExpirationTime": 90,
+    "messageSubmissionInterval": 3600
+  },
+  "dataStorage": {
+    "localPath": "/app/data",
+    "filePrefix": "kenyan_stock_",
+    "fileFormat": "json",
+    "maxFileSize": "10MB",
+    "rotationInterval": "1d"
+  },
+  "metrics": {
+    "enabled": true,
+    "port": 9090,
+    "path": "/metrics",
+    "collectInterval": 60
+  }
+} 

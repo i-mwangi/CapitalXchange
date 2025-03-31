@@ -1,0 +1,23 @@
+{
+  "name": "ibet-network-tests",
+  "version": "1.0.0",
+  "description": "Test suite for IBET Network Hedera and Kenya Stock Exchange integration",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "@hashgraph/sdk": "^2.39.0",
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+} 

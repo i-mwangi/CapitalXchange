@@ -1,0 +1,110 @@
+{
+    "config": {
+        "chainId": 296,
+        "homesteadBlock": 0,
+        "eip150Block": 0,
+        "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "eip155Block": 0,
+        "eip158Block": 0,
+        "byzantiumBlock": 0,
+        "constantinopleBlock": 0,
+        "petersburgBlock": 0,
+        "istanbulBlock": 0,
+        "berlinBlock": 0,
+        "londonBlock": 0,
+        "arrowGlacierBlock": 0,
+        "grayGlacierBlock": 0,
+        "mergeNetsplitBlock": 0,
+        "terminalTotalDifficulty": 0,
+        "terminalBlockHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "terminalBlockNumber": 0,
+        "shanghaiTime": 0,
+        "cancunTime": 0,
+        "pragueTime": 0,
+        "hedera": {
+            "network": "testnet",
+            "mirrorNode": "https://testnet.mirrornode.hedera.com/api/v1",
+            "consensusNode": "0.0.3",
+            "general": {
+                "nodeId": "0.0.4",
+                "accountId": "0.0.123457",
+                "privateKey": "302e020100300506032b657004220420...",
+                "mode": "relay",
+                "maxTransactionFee": 100000,
+                "maxTransactionSize": 6144,
+                "maxContractSize": 24576,
+                "maxContractStorage": 1024,
+                "maxContractGas": 1000000
+            },
+            "stockMarket": {
+                "apiEndpoint": "https://api.kenyanstocks.example.com",
+                "updateInterval": 300,
+                "symbols": ["SCOM", "EQTY", "KCB", "Safaricom", "EABL"],
+                "tradingHours": {
+                    "start": "09:00",
+                    "end": "15:00",
+                    "timezone": "Africa/Nairobi",
+                    "breaks": [
+                        {
+                            "start": "12:00",
+                            "end": "12:30"
+                        }
+                    ]
+                },
+                "settlementPeriod": "T+3",
+                "maxPriceChange": 0.1,
+                "contracts": {
+                    "stockRegistry": "0.0.123456",
+                    "tradingEngine": "0.0.123457",
+                    "settlementSystem": "0.0.123458",
+                    "priceOracle": "0.0.123459",
+                    "riskManager": "0.0.123460"
+                },
+                "tradingRules": {
+                    "minOrderSize": 100,
+                    "maxOrderSize": 1000000,
+                    "pricePrecision": 2,
+                    "quantityPrecision": 0,
+                    "allowedOrderTypes": ["MARKET", "LIMIT", "STOP_LOSS", "TAKE_PROFIT"]
+                },
+                "riskManagement": {
+                    "maxPositionSize": 1000000,
+                    "maxDailyLoss": 0.1,
+                    "maxDrawdown": 0.2,
+                    "marginRequirements": {
+                        "initial": 0.5,
+                        "maintenance": 0.25
+                    }
+                },
+                "monitoring": {
+                    "metricsInterval": 60,
+                    "alertThresholds": {
+                        "priceDeviation": 0.05,
+                        "volumeSpike": 2.0,
+                        "latency": 1000
+                    }
+                }
+            }
+        }
+    },
+    "nonce": "0x0",
+    "timestamp": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x1fffffffffffff",
+    "difficulty": "0x1",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "coinbase": "0x0000000000000000000000000000000000000000",
+    "alloc": {
+        "0x0000000000000000000000000000000000000000": {
+            "balance": "0x0"
+        }
+    },
+    "number": "0x0",
+    "gasUsed": "0x0",
+    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "baseFeePerGas": "0x0",
+    "withdrawals": [],
+    "blobGasUsed": "0x0",
+    "excessBlobGas": "0x0",
+    "parentBeaconBlockRoot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}

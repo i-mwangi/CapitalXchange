@@ -1,0 +1,56 @@
+name: Build Hedera General Node
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'general/**'
+      - '.github/workflows/build_hedera_general.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'general/**'
+      - '.github/workflows/build_hedera_general.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: |
+          cd general
+          npm install
+          
+      - name: Run tests
+        run: |
+          cd general
+          npm test
+        env:
+          HEDERA_NETWORK: testnet
+          OPERATOR_ID: ${{ secrets.HEDERA_OPERATOR_ID }}
+          OPERATOR_KEY: ${{ secrets.HEDERA_OPERATOR_KEY }}
+          KENYA_STOCK_API_KEY: ${{ secrets.KENYA_STOCK_API_KEY }}
+          
+      - name: Build Docker image
+        run: |
+          cd general
+          docker build -t capitalxchange/hedera-general:latest .
+          
+      - name: Push to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Push Docker image
+        run: |
+          docker tag capitalxchange/hedera-general:latest ghcr.io/i-mwangi/capitalxchange/hedera-general:latest
+          docker push ghcr.io/i-mwangi/capitalxchange/hedera-general:latest 

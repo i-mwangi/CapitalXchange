@@ -1,0 +1,19 @@
+{
+  "name": "ibet-network-validator",
+  "version": "1.0.0",
+  "description": "Hedera validator node for Kenya Stock Exchange integration",
+  "main": "monitor_block_sync.js",
+  "scripts": {
+    "start": "node monitor_block_sync.js",
+    "monitor": "node monitor_block_sync.js"
+  },
+  "dependencies": {
+    "@hashgraph/sdk": "^2.39.0",
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+} 

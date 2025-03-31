@@ -1,0 +1,19 @@
+{
+  "name": "hedera-kenyan-stock-integration",
+  "version": "1.0.0",
+  "description": "Integration between Hedera and Kenyan Stock Market API",
+  "scripts": {
+    "compile": "node compile_contract.js",
+    "monitor": "node /monitoring/monitor_block_sync.js",
+    "stock-api": "node /monitoring/kenyan_stock_api.js",
+    "integration": "node /monitoring/hedera_stock_integration.js",
+    "start": "bash run.sh"
+  },
+  "dependencies": {
+    "@hashgraph/sdk": "^2.35.0",
+    "@hashgraph/json-rpc-relay": "^0.12.0",
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "solc": "^0.8.19"
+  }
+} 

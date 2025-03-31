@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  validator:
+    build:
+      context: ./validator
+      dockerfile: Dockerfile
+    container_name: ibet-validator
+    ports:
+      - "8545:8545"  # JSON-RPC
+      - "50211:50211"  # gRPC
+    volumes:
+      - ./validator/logs:/app/logs
+      - ./validator/.env:/app/.env
+    environment:
+      - NODE_ENV=production
+      - HEDERA_NETWORK=testnet
+      - VALIDATOR_MODE=validator
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8545/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    networks:
+      - ibet-network
+
+  monitoring:
+    build:
+      context: ./validator
+      dockerfile: Dockerfile
+    container_name: ibet-monitoring
+    command: npm run monitor
+    volumes:
+      - ./validator/logs:/app/logs
+      - ./validator/.env:/app/.env
+    environment:
+      - NODE_ENV=production
+      - HEDERA_NETWORK=testnet
+    depends_on:
+      - validator
+    restart: unless-stopped
+    networks:
+      - ibet-network
+
+networks:
+  ibet-network:
+    driver: bridge

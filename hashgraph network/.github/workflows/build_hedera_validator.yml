@@ -1,0 +1,55 @@
+name: Build Hedera Validator
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'validator/**'
+      - '.github/workflows/build_hedera_validator.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'validator/**'
+      - '.github/workflows/build_hedera_validator.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: |
+          cd validator
+          npm install
+          
+      - name: Run tests
+        run: |
+          cd validator
+          npm test
+        env:
+          HEDERA_NETWORK: testnet
+          OPERATOR_ID: ${{ secrets.HEDERA_OPERATOR_ID }}
+          OPERATOR_KEY: ${{ secrets.HEDERA_OPERATOR_KEY }}
+          
+      - name: Build Docker image
+        run: |
+          cd validator
+          docker build -t capitalxchange/hedera-validator:latest .
+          
+      - name: Push to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Push Docker image
+        run: |
+          docker tag capitalxchange/hedera-validator:latest ghcr.io/i-mwangi/capitalxchange/hedera-validator:latest
+          docker push ghcr.io/i-mwangi/capitalxchange/hedera-validator:latest 

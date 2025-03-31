@@ -1,0 +1,56 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8545,
+    "requestTimeout": 15000,
+    "logLevel": "info"
+  },
+  "hedera": {
+    "network": "testnet",
+    "operatorAccountId": "${ACCOUNT_ID}",
+    "operatorPrivateKey": "${PRIVATE_KEY}",
+    "mirrorNodeURL": "https://testnet.mirrornode.hedera.com",
+    "consensusNodeURL": "0.testnet.hedera.com:50211"
+  },
+  "api": {
+    "websocket": {
+      "enabled": true,
+      "port": 8546
+    },
+    "eth": {
+      "enabled": true
+    },
+    "net": {
+      "enabled": true
+    },
+    "web3": {
+      "enabled": true
+    },
+    "hbar": {
+      "enabled": true
+    }
+  },
+  "cacheConfig": {
+    "blockResults": {
+      "maxSize": 1000,
+      "maxAgeSec": 300
+    },
+    "transactionResults": {
+      "maxSize": 5000,
+      "maxAgeSec": 300
+    },
+    "recordCache": {
+      "maxSize": 5000,
+      "maxAgeSec": 300
+    }
+  },
+  "kenyanStockMarket": {
+    "apiKey": "${KENYAN_STOCK_API_KEY}",
+    "apiEndpoint": "${KENYAN_STOCK_API_ENDPOINT}",
+    "dataRefreshInterval": 3600,
+    "stockContract": {
+      "address": "0.0.0",
+      "gasLimit": 1000000
+    }
+  }
+} 

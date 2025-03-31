@@ -1,0 +1,19 @@
+!.gitkeep
+
+docker-compose-*.yml
+
+tests/contracts/*.json
+tests/__pycache__/
+
+# VSCode
+.vscode
+
+# Intellij
+.idea/
+/*.iml
+
+# PyEnv
+.python-version
+
+# Mac
+.DS_Store
