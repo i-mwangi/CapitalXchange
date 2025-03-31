@@ -1,86 +1,196 @@
-<p align="center">
-  <img width="33%" src="https://user-images.githubusercontent.com/963333/130191619-f1f0c342-ab8f-499d-b8f8-52309c13d2cb.png"/>
-</p>
+# CapitalXchange - Muunganiko wa Mtandao wa Hedera Hashgraph
 
-# ibet-Network
+## Muhtasari
+Muunganiko wa mtandao wa CapitalXchange na Hedera Hashgraph unatoa miundombinu thabiti kwa usindikaji wa data za soko la hisa na biashara kwenye mtandao wa Hedera. Safu hii ya mtandao inahakikisha operesheni salama, wazi na ufanisi kati ya Soko la Hisa la Kenya na Hedera Hashgraph.
 
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-2.5-blue.svg?cacheSeconds=2592000" />
-</p>
+## Vipengele vya Mtandao
 
-[English](./README.md) | 日本語
+### 1. Nodi ya Uthibitishaji
+- Inashiriki katika makubaliano
+- Inasindika miamala
+- Inadumisha hali ya mtandao
+- Inathibitisha vitalu
 
-## 特徴
+### 2. Nodi ya Jumla
+- Inahifadhi data za soko la hisa
+- Inashughulikia maombi ya API
+- Inadumisha usawazishaji wa data
+- Inatoa huduma za ufuatiliaji
 
-[ibet](https://ibet.jp/) は [株式会社BOOSTRY](https://boostry.co.jp/) が開発・運用を主導するコンソーシアムブロックチェーンです。
+## Usanikishaji wa Mtandao
 
-### 1. コンソーシアムブロックチェーン
+### Usanikishaji wa Mazingira
+```env
+# Usanikishaji wa Mtandao wa Hedera
+HEDERA_NETWORK=testnet
+OPERATOR_ID=your_account_id
+OPERATOR_KEY=your_private_key
+KSE_TOPIC_ID=your_topic_id
 
-ibet はコンソーシアム型のブロックチェーンです。
-エンタープライズ向けOSSブロックチェーンプロダクトである [Quorum](https://consensys.net/quorum/) を利用して構築されています。
-現在のところ、日本市場に限定して開発が行われています。
+# Usanikishaji wa Nodi
+NODE_PORT=5551
+NODE_ENV=development
+```
 
-ibet は「企業」によって構成されるコンソーシアムブロックチェーンです。
-コンソーシアム参加企業は自身のノード（非Validatorノード）を構築し、ネットワークに接続します。
+### Vipengele vya Mtandao
+- Usawazishaji wa data kwa wakati halisi
+- Usindikaji salama wa miamala
+- Ufuatiliaji wa kiotomatiki
+- Uchunguzi wa afya
+- Ushughulikiaji wa hitilafu
 
-### 2. 2つのブロックチェーン
+## Muundo wa Folda
+```
+hashgraph network/
+├── validator/           # Usanikishaji wa nodi ya uthibitishaji
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+├── general/            # Usanikishaji wa nodi ya jumla
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+├── monitoring/         # Huduma za ufuatiliaji
+│   ├── monitor_block_sync.js
+│   └── monitor_stock_market.js
+└── tests/             # Majaribio ya mtandao
+    ├── __tests__/
+    └── jest.config.js
+```
 
-日本法令に準拠する2つのネットワーク、"**ibet**" と "**ibet for Fin**" が存在します。
-それぞれのネットワークは別々のネットワークとして構成されています。
+## Maagizo ya Usanikishaji
 
-各コンソーシアムには独立したガバナンスがあり、独自の規約とガイドラインに従って運営されています。
+1. **Nakili Repository**
+```bash
+git clone https://github.com/i-mwangi/CapitalXchange.git
+cd CapitalXchange/hashgraph\ network
+```
 
-- **ibet** : どのような企業でも参加できるネットワークです。主に非金融商品の権利（ユーティリティトークン）が流通します。
-- **ibet for Fin** : 主に金融機関のみが参加できるネットワークです。流通市場においては、認可を受けた金融機関の仲介が必要な商品が流通します。
+2. **Sakinisha Vitegemezi**
+```bash
+npm install
+```
 
+3. **Sanikisha Mazingira**
+```bash
+cp .env.example .env
+# Hariri .env na data zako za kuingia
+```
 
-## このリポジトリについて
+4. **Anzisha Mtandao**
+```bash
+# Anzisha nodi ya uthibitishaji
+cd validator
+npm start
 
-このリポジトリでは、ibet コンソーシアムで定義されるネットワーク定義、
-Quorumノードコンテナ（Validator、General）の管理を行います。
+# Anzisha nodi ya jumla
+cd ../general
+npm start
+```
 
-### リポジトリの構造
+## Ufuatiliaji
 
-各ネットワークのネットワーク定義、ノード定義が以下のディレクトリに格納されています。
+### Ufuatiliaji wa Usawazishaji wa Vitalu
+```bash
+npm run monitor:block-sync
+```
 
-- `ibet-network` : ibet メインネットワーク
-- `ibet-for-fin-network` : ibet for Fin メインネットワーク
-- `test-network` : ibet テストネットワーク
-- `local-network` : ローカルネットワーク
+### Ufuatiliaji wa Soko la Hisa
+```bash
+npm run monitor:stock-market
+```
 
-### バージョン管理方針
+## Majaribio
 
-ibet-Networkのリポジトリは、以下の方針でバージョン管理されます。
+### Fanya Majaribio ya Mtandao
+```bash
+npm test
+```
 
-- リポジトリ全体のバージョンアップは6ヶ月に1回行います。
-- Quorumノードのバージョンアップは6ヶ月に1回行います。次回の更新で採用するバージョンは、コンソーシアムの合意により決定します。
-  - ハードフォークを行わず マイナーバージョンアップ(例：1.0 -> 1.1)
-  - ハードフォークあり メジャーバージョンアップ(例：1.0 -> 2.0)
-- その他、緊急性の高い修正については、リビジョンアップを緊急にリリースします（例：1.1.0 -> 1.1.1）。
+### Ufadhili wa Majaribio
+```bash
+npm run test:coverage
+```
 
+## Usalama
 
-## Quorum バージョン
+### Usalama wa Mtandao
+- Nodi zote zinathibitishwa
+- Miamala inasainiwa
+- Data inafichwa
+- Ukaguzi wa usalama wa mara kwa mara
 
-現在、ibet Network は Quorum の v24.4.0 をベースにしたノードクライアントを利用して構築されています。
-ノードアプリケーションは ibet Network 向けに最適化されて、Quorum 本体のものとは部分的に異なります。
-詳細は以下のプロジェクトをご参照ください。
+### Udhibiti wa Ufikiaji
+- Ufikiaji kulingana na jukumu
+- Uthibitishaji wa API
+- Kikomo cha kiwango
+- Orodha ya IP nyeupe
 
-[BoostryJP/quorum](https://github.com/BoostryJP/quorum)
+## Matengenezo
 
-## コンセンサスプロトコル
+### Uchunguzi wa Afya
+- Ufuatiliaji wa hali ya nodi
+- Uunganishaji wa mtandao
+- Usawazishaji wa data
+- Vipimo vya utendaji
 
-ibet ネットワークではコンセンサスプロトコルとして [QBFT](https://arxiv.org/abs/2002.03613) を利用しています。
+### Taratibu za Backup
+- Backup za hali za mara kwa mara
+- Backup za usanikishaji
+- Mipango ya kurejesha data
 
-## EVM バージョン
+## Uwekaji
 
-ibet ネットワークでは `berlin` を採用しています。
-そのため、スマートコントラクトはこのバージョンでコンパイルをする必要があります。
+### Uwekaji wa Docker
+```bash
+# Jenga picha
+docker-compose build
 
-## ibet ネットワークへの参加方法
+# Anzisha huduma
+docker-compose up -d
+```
 
-ネットワークへの参加方法に関する詳細な情報は、[ibet 公式](https://ibet.jp/) をご確認ください。
+### Uwekaji wa Mkono
+1. Jenga nodi:
+```bash
+npm run build
+```
 
-## ライセンス
+2. Anzisha huduma:
+```bash
+npm start
+```
 
-- go-ethereum 関連のライブラリは [GNU Lesser General Public License v3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html) でライセンスされています。`COPYING.LESSER` のファイルを参照ください。
-- go-ethereum 関連のバイナリは [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) でライセンスされています。`COPYING` のファイルを参照ください。
+## Uchunguzi wa Matatizo
+
+### Masuala ya Kawaida
+1. Usawazishaji wa Nodi
+   - Chunguza uunganishaji wa mtandao
+   - Thibitisha data za kuingia za Hedera
+   - Fuatilia hali ya usawazishaji wa vitalu
+
+2. Usindikaji wa Data
+   - Chunguza uunganishaji wa API ya KSE
+   - Thibitisha muundo wa data
+   - Fuatilia logi za usindikaji
+
+### Logi
+- Logi za nodi: `logs/node.log`
+- Logi za usawazishaji: `logs/sync.log`
+- Logi za hitilafu: `logs/error.log`
+
+## Ushiriki
+1. Fork repository
+2. Unda tawi lako la kipengele
+3. Commit mabadiliko yako
+4. Push kwenye tawi
+5. Unda Pull Request
+
+## Leseni
+Mradi huu unalindwa na Leseni ya MIT - tazama faili ya LICENSE kwa maelezo.
+
+## Usaidizi
+Kwa usaidizi, wasiliana na:
+- Barua pepe: support@capitalxchange.com
+- Tovuti: https://capitalxchange.com
+- GitHub Issues: https://github.com/i-mwangi/CapitalXchange/issues 
