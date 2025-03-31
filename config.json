@@ -1,0 +1,12 @@
+{
+  "hedera": {
+    "network": "testnet",
+    "chainId": 296,
+    "accountId": "0.0.12345678",
+    "privateKey": "your-hedera-private-key"
+  },
+  "kenyanStock": {
+    "apiKey": "your-kenyan-stock-api-key",
+    "endpoint": "https://api.kenyanstocks.example.com"
+  }
+} 
